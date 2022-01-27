@@ -14,7 +14,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr v-for="value in productsList" :key="value.id" class="border-b-4 border-pink-400">
+            <tr v-for="value in productsList" :key="value.id" class="border-b border-pink-400">
               <td width="150">{{ value.title }}</td>
               <td width="120">
                 {{ value.origin_price }}
