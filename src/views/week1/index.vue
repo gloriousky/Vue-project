@@ -1,17 +1,4 @@
 <template>
-  <div class="box-border">
-    <label for="">信箱</label>
-    <input type="email" v-model="emailValue" />
-    <label for="">密碼</label>
-    <input type="password" v-model="passwordValue" />
-    <button
-      class="hover:bg-red-400 bg-blue-600 text-white py-2 px-6 rounded-lg m-5"
-      type="button"
-      @click="login"
-    >
-      登入
-    </button>
-  </div>
   <div>
     <button
       class="
