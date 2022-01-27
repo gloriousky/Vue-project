@@ -76,7 +76,7 @@
 import { ref } from "vue";
 
 export default {
-  name: "HelloWorld",
+  name: "home",
   components: {},
   data() {
     return {

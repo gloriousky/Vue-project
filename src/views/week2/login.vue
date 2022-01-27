@@ -35,6 +35,21 @@
   </div>
 </template>
 <script>
+import { useRouter } from "vue-router";
+export default {
+  name: "login",
+  setup() {
+    const router = useRouter();
+    const toHome = () => {
+      router.push({
+        name: "home",
+      });
+    };
+    return {
+      toHome,
+    };
+  },
+};
 </script>
 <style>
 html,
@@ -43,11 +58,6 @@ body {
   text-align: center;
 }
 
-body {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
 
 .form-signin {
   width: 100%;
