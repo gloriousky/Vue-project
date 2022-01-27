@@ -4,7 +4,7 @@
       <div class="col-md-6">
         <h2>產品列表</h2>
         <table class="">
-          <thead>
+          <thead class="border-b-4 border-indigo-500">
             <tr>
               <th width="150">產品名稱</th>
               <th width="120">原價</th>
@@ -14,7 +14,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr v-for="value in productsList" :key="value.id">
+            <tr v-for="value in productsList" :key="value.id" class="border-b-4 border-pink-400">
               <td width="150">{{ value.title }}</td>
               <td width="120">
                 {{ value.origin_price }}
@@ -58,8 +58,8 @@
               </h5>
               <p class="">商品描述：{{ productInfo.description }}</p>
               <p class="">商品內容：{{ productInfo.content }}</p>
-              <div class="flex justify-center">
-                <p class="">{{ productInfo.price }}</p>
+              <div class="flex justify-center items-center">
+                <p class="mx-2 text-xl">特價:{{ productInfo.price }}元</p>
                 <p class="">
                   <del>{{ productInfo.origin_price }}</del>
                 </p>
