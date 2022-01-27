@@ -1,13 +1,13 @@
 <template>
-  <nav class="bg-blue-300 flex justify-between">
-      <img class="w-12 mb-8" alt="Vue logo" src="./assets/logo.png" />
-      <router-link class="mx-2" to="/home">回首頁</router-link>
+  <nav class="bg-blue-300 flex items-center justify-between">
+      <img class="w-12" alt="Vue logo" src="./assets/logo.png" />
+      <router-link class="mx-2" to="/">回首頁</router-link>
   </nav>
-  <div class="flex justify-center mb-8">
+  <aside class="fixed flex flex-col">
 
-    <router-link class="mx-2" to="/week1">第一週作業</router-link>
-    <router-link class="mx-2" to="/week2/login">第二週作業</router-link>
-  </div>
+    <router-link class="m-2 router-link-active" to="/week1">第一週作業</router-link>
+    <router-link class="m-2" to="/week2/login">第二週作業</router-link>
+  </aside>
   <router-view></router-view>
 </template>
 

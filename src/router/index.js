@@ -2,9 +2,10 @@ import { createRouter, createWebHistory } from "vue-router";
 const home = () => import("../views/home.vue");
 const week1Project = () => import("../views/week1/index.vue");
 const week2Project = () => import("../views/week2/login.vue");
+const week2ProjectIndex = () => import("../views/week2/product.vue");
 
 const routes = [
-  { path: "/", redirect: "/home" },
+  { path: "/home", redirect: "/" },
   {
     path: "/home",
     name: "home",
@@ -19,6 +20,11 @@ const routes = [
     path: "/week2/login",
     name: "login",
     component: week2Project,
+  },
+  {
+    path: "/week2/product",
+    name: "product",
+    component: week2ProjectIndex,
   },
 ];
 

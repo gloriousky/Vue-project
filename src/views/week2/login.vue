@@ -1,31 +1,43 @@
   <template>
-  <div class="container">
-    <div class="row justify-content-center">
-      <h1 class="h3 mb-3 font-weight-normal">請先登入</h1>
-      <div class="col-8">
-        <form id="form" class="form-signin">
-          <div class="form-floating mb-3">
+  <div class="container mx-auto">
+    <div class="flex flex-col justify-center">
+      <h1 class="text-xl mb-3">請先登入</h1>
+      <div class="">
+        <form id="form" class="">
+          <div class="flex justify-center items-center mb-3">
+            <label for="username" class="mr-2">Email address</label>
             <input
               type="email"
-              class="form-control"
-              id="username"
+              class="px-2 py-1 text-lg"
+              v-model="emailValue"
               placeholder="name@example.com"
               required
               autofocus
             />
-            <label for="username">Email address</label>
           </div>
-          <div class="form-floating">
+          <div class="flex justify-center items-center">
+            <label for="password" class="mr-9">Password</label>
             <input
               type="password"
-              class="form-control"
-              id="password"
+              class="px-2 py-1 text-lg"
+              v-model="passwordValue"
               placeholder="Password"
               required
             />
-            <label for="password">Password</label>
           </div>
-          <button class="btn btn-lg btn-primary w-100 mt-3" type="submit">
+          <button
+            class="
+              hover:bg-red-400
+              bg-blue-600
+              text-white
+              py-2
+              px-6
+              rounded-lg
+              m-5
+            "
+            type="button"
+            @click="login"
+          >
             登入
           </button>
         </form>
@@ -35,19 +47,41 @@
   </div>
 </template>
 <script>
-import { useRouter } from "vue-router";
 export default {
   name: "login",
-  setup() {
-    const router = useRouter();
-    const toHome = () => {
-      router.push({
-        name: "home",
-      });
-    };
+  data() {
     return {
-      toHome,
+      url: "https://vue3-course-api.hexschool.io/v2",
+      apiPath: "david-hexschool",
+      emailValue: "",
+      passwordValue: "",
     };
+  },
+  created() {
+    console.log(this.$router);
+  },
+  methods: {
+    login() {
+      const username = this.emailValue;
+      const password = this.passwordValue;
+      // eslint-disable-next-line no-unused-vars
+      const user = {
+        username,
+        password,
+      };
+      this.axios
+        .post(`${this.url}/admin/signin`, user)
+        .then((res) => {
+          console.log(res);
+          alert(res.data.message);
+          const { token, expired } = res.data;
+          document.cookie = `hexToken=${token};expires=${new Date(expired)}`;
+          this.$router.push("/week2/product");
+        })
+        .catch((err) => {
+          console.dir(err);
+        });
+    },
   },
 };
 </script>
@@ -56,13 +90,5 @@ html,
 body {
   height: 100%;
   text-align: center;
-}
-
-
-.form-signin {
-  width: 100%;
-  max-width: 330px;
-  padding: 15px;
-  margin: auto;
 }
 </style>
