@@ -4,13 +4,71 @@
     <input type="email" v-model="emailValue" />
     <label for="">密碼</label>
     <input type="password" v-model="passwordValue" />
-    <button class="hover:bg-red-400 bg-blue-600 text-white py-2 px-6 rounded-lg m-5" type="button" @click="login">登入</button>
+    <button
+      class="hover:bg-red-400 bg-blue-600 text-white py-2 px-6 rounded-lg m-5"
+      type="button"
+      @click="login"
+    >
+      登入
+    </button>
   </div>
   <div>
-    <button class="p-2 mx-2 hover:bg-purple-300 bg-purple-400 border-4 border-purple-300 rounded-2xl" type="button" @click="checkLogin">確認是否登入</button>
-    <button class="p-2 mx-2 hover:bg-purple-300 bg-purple-400 border-4 border-purple-300 rounded-2xl" type="button" @click="getProducts">取得後台的產品列表</button>
-    <button class="p-2 mx-2 hover:bg-purple-300 bg-purple-400 border-4 border-purple-300 rounded-2xl" type="button" @click="addProducts">新增一個產品</button>
-    <button class="p-2 mx-2 hover:bg-purple-300 bg-purple-400 border-4 border-purple-300 rounded-2xl" type="button" @click="delProducts">刪除一個產品</button>
+    <button
+      class="
+        p-2
+        mx-2
+        hover:bg-purple-300
+        bg-purple-400
+        border-4 border-purple-300
+        rounded-2xl
+      "
+      type="button"
+      @click="checkLogin"
+    >
+      確認是否登入
+    </button>
+    <button
+      class="
+        p-2
+        mx-2
+        hover:bg-purple-300
+        bg-purple-400
+        border-4 border-purple-300
+        rounded-2xl
+      "
+      type="button"
+      @click="getProducts"
+    >
+      取得後台的產品列表
+    </button>
+    <button
+      class="
+        p-2
+        mx-2
+        hover:bg-purple-300
+        bg-purple-400
+        border-4 border-purple-300
+        rounded-2xl
+      "
+      type="button"
+      @click="addProducts"
+    >
+      新增一個產品
+    </button>
+    <button
+      class="
+        p-2
+        mx-2
+        hover:bg-purple-300
+        bg-purple-400
+        border-4 border-purple-300
+        rounded-2xl
+      "
+      type="button"
+      @click="delProducts"
+    >
+      刪除一個產品
+    </button>
   </div>
 </template>
 
@@ -31,7 +89,9 @@ export default {
   created() {
     this.checkLogin();
   },
-  mounted() {},
+  mounted() {
+
+  },
   methods: {
     login() {
       const username = this.emailValue;
