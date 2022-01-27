@@ -1,5 +1,5 @@
 <template>
-  <div class="mx-auto">
+  <div class="flex flex-col items-center mx-auto">
     <div class="">
       <div class="col-md-6">
         <h2>產品列表</h2>
@@ -48,19 +48,17 @@
           <div class="">
             <img
               :src="productInfo.imageUrl"
-              class="card-img-top primary-image"
+              class="w-80 mx-auto"
               alt="主圖"
             />
             <div class="">
               <h5 class="">
                 {{ productInfo.title }}
-                <span class="">{{
-                  productInfo.category
-                }}</span>
+                <span class="">{{ productInfo.category }}</span>
               </h5>
               <p class="">商品描述：{{ productInfo.description }}</p>
               <p class="">商品內容：{{ productInfo.content }}</p>
-              <div class="flex">
+              <div class="flex justify-center">
                 <p class="">{{ productInfo.price }}</p>
                 <p class="">
                   <del>{{ productInfo.origin_price }}</del>
@@ -69,6 +67,9 @@
               </div>
             </div>
           </div>
+          <template v-for="(value) in productInfo.imagesUrl">
+            <img :src="value" alt="" class="w-60 flex mx-auto">
+          </template>
         </template>
         <p v-else class="">請選擇一個商品查看</p>
       </div>
@@ -151,6 +152,18 @@ export default {
         .catch((err) => {
           console.log(err);
         });
+    },
+    getProductInfo(value) {
+      console.log(value.title);
+      this.productInfo.title = value.title;
+      this.productInfo.imageUrl = value.imageUrl;
+      this.productInfo.category = value.category;
+      this.productInfo.description = value.description;
+      this.productInfo.content = value.content;
+      this.productInfo.price = value.price;
+      this.productInfo.origin_price = value.origin_price;
+      this.productInfo.unit = value.unit;
+      this.productInfo.imagesUrl = value.imagesUrl;
     },
     addProducts() {
       this.axios

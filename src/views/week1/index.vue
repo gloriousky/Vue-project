@@ -154,7 +154,7 @@ export default {
     delProducts() {
       this.axios
         .delete(
-          `${this.url}/api/${this.apiPath}/admin/product/-Mts0xvpeSWRVjuKsgoU`
+          `${this.url}/api/${this.apiPath}/admin/product/-MuJsj_RPDAGBP_ivB-5`
         )
         .then((res) => {
           console.log(res);
