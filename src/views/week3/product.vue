@@ -3,8 +3,8 @@
     <div class="">
       <div class="col-md-6">
         <h2>產品列表</h2>
-        <table class="border-4 border-gray-800 bg-white">
-          <thead class="border-b-4 border-gray-800">
+        <table class="">
+          <thead class="border-b-4 border-indigo-500">
             <tr>
               <th width="150">產品名稱</th>
               <th width="120">原價</th>
@@ -14,7 +14,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr v-for="value in productsList" :key="value.id" class="border-b border-gray-400">
+            <tr v-for="value in productsList" :key="value.id" class="border-b border-pink-400">
               <td width="150">{{ value.title }}</td>
               <td width="120">
                 {{ value.origin_price }}
@@ -23,14 +23,14 @@
                 {{ value.price }}
               </td>
               <td width="150">
-                <span v-if="value.is_enabled" class="text-green-600">啟用</span>
+                <span v-if="value.is_enabled" class="">啟用</span>
                 <span v-else>未啟用</span>
               </td>
               <td width="120">
                 <button
                   @click="getProductInfo(value)"
                   type="button"
-                  class="text-blue-500"
+                  class="btn btn-primary"
                 >
                   查看細節
                 </button>
@@ -38,8 +38,8 @@
             </tr>
           </tbody>
         </table>
-        <p class="text-xl">
-          目前有 <span class="text-red-500">{{ productsList.length }}</span> 項產品
+        <p>
+          目前有 <span>{{ productsList.length }}</span> 項產品
         </p>
       </div>
       <div class="">
@@ -78,7 +78,7 @@
 </template>
 <script>
 export default {
-  name: "product",
+  name: "week3product",
   data() {
     return {
       url: "https://vue3-course-api.hexschool.io/v2",
@@ -154,6 +154,7 @@ export default {
         });
     },
     getProductInfo(value) {
+      console.log(value.title);
       this.productInfo.title = value.title;
       this.productInfo.imageUrl = value.imageUrl;
       this.productInfo.category = value.category;

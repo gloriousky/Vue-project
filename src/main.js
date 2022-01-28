@@ -12,3 +12,4 @@ app.use(VueAxios, axios);
 
 app.provide("axios", app.config.globalProperties.axios); // provide 'axios'
 app.mount("#app");
+console.clear()
