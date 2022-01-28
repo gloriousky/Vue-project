@@ -15,7 +15,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr v-for="value in productsList" :key="value.id" class="border-b border-gray-400">
+            <tr v-for="value in productsList" :key="value.id" class="border-b border-gray-400 text-lg">
               <td width="150">{{ value.title }}</td>
               <td width="120">
                 {{ value.origin_price }}
@@ -23,7 +23,7 @@
               <td width="120">
                 {{ value.price }}
               </td>
-              <td width="150">
+              <td width="120">
                 <span v-if="value.is_enabled" class="text-green-600">啟用</span>
                 <span v-else>未啟用</span>
               </td>
@@ -34,6 +34,22 @@
                   class="text-blue-500"
                 >
                   查看細節
+                </button>
+              </td>
+              <td width="150">
+                <button
+                  @click="getProductInfo(value)"
+                  type="button"
+                  class="text-blue-500 mx-3"
+                >
+                  編輯
+                </button>
+                <button
+                  @click="getProductInfo(value)"
+                  type="button"
+                  class="text-red-400"
+                >
+                  刪除
                 </button>
               </td>
             </tr>
