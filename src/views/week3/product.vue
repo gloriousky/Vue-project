@@ -2,7 +2,7 @@
   <div class="flex flex-col justify-center items-center mx-auto">
     <div class="w-5/6 flex flex-col justify-center items-center">
       <div class="">
-        <h2>產品列表</h2>
+        <h2 class="text-2xl">產品列表</h2>
         <table class="border-4 border-gray-800 bg-white">
           <thead class="border-b-4 border-gray-800">
             <tr>
@@ -192,7 +192,7 @@ export default {
     },
     addProducts() {
       this.axios
-        .post(`${this.url}/api/${this.apiPath}/admin/product`, product)
+        .post(`${this.url}/api/${this.apiPath}/admin/product`)
         .then((res) => {
           console.log(res);
         })
@@ -202,17 +202,16 @@ export default {
     },
     delProduct(value) {
       console.log(value);
+      this.productsList = [];
       this.axios
         .delete(`${this.url}/api/${this.apiPath}/admin/product/${value}`)
         .then((res) => {
           console.log(res);
+          this.getProducts();
         })
         .catch((err) => {
           console.log(err);
         });
-      this.$nextTick(() => {
-        this.getProducts();
-      });
     },
   },
 };
