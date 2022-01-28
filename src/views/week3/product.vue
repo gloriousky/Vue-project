@@ -68,7 +68,7 @@
             </div>
           </div>
           <template v-for="(value) in productInfo.imagesUrl">
-            <img :src="value" alt="" class="w-60 flex mx-auto">
+            <img :src="value" alt="" class="w-60 flex mx-auto m-1">
           </template>
         </template>
         <p v-else class="">請選擇一個商品查看</p>
