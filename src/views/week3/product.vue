@@ -15,7 +15,11 @@
             </tr>
           </thead>
           <tbody>
-            <tr v-for="value in productsList" :key="value.id" class="border-b border-gray-400 text-lg">
+            <tr
+              v-for="value in productsList"
+              :key="value.id"
+              class="border-b border-gray-400 text-lg"
+            >
               <td width="150">{{ value.title }}</td>
               <td width="120">
                 {{ value.origin_price }}
@@ -40,14 +44,21 @@
                 <button
                   @click="getProductInfo(value)"
                   type="button"
-                  class="text-blue-500 mx-3"
+                  class="
+                    text-white
+                    bg-blue-500
+                    hover:bg-blue-700
+                    p-2
+                    mx-3
+                    rounded-xl
+                  "
                 >
                   編輯
                 </button>
                 <button
-                  @click="getProductInfo(value)"
+                  @click="delProduct(value.id)"
                   type="button"
-                  class="text-red-400"
+                  class="text-white bg-red-400 hover:bg-red-600 p-2 rounded-xl"
                 >
                   刪除
                 </button>
@@ -56,18 +67,15 @@
           </tbody>
         </table>
         <p class="text-xl">
-          目前有 <span class="text-red-500">{{ productsList.length }}</span> 項產品
+          目前有
+          <span class="text-red-500">{{ productsList.length }}</span> 項產品
         </p>
       </div>
       <div class="">
         <h2>單一產品細節</h2>
         <template v-if="productInfo.title">
           <div class="">
-            <img
-              :src="productInfo.imageUrl"
-              class="w-80 mx-auto"
-              alt="主圖"
-            />
+            <img :src="productInfo.imageUrl" class="w-80 mx-auto" alt="主圖" />
             <div class="">
               <h5 class="">
                 {{ productInfo.title }}
@@ -76,7 +84,9 @@
               <p class="">商品描述：{{ productInfo.description }}</p>
               <p class="">商品內容：{{ productInfo.content }}</p>
               <div class="flex justify-center items-center">
-                <p class="mx-2 text-xl text-red-500">特價:{{ productInfo.price }}元</p>
+                <p class="mx-2 text-xl text-red-500">
+                  特價:{{ productInfo.price }}元
+                </p>
                 <p class="">
                   <del>{{ productInfo.origin_price }}</del>
                 </p>
@@ -84,8 +94,8 @@
               </div>
             </div>
           </div>
-          <template v-for="(value) in productInfo.imagesUrl">
-            <img :src="value" alt="" class="w-60 flex mx-auto m-1">
+          <template v-for="value in productInfo.imagesUrl">
+            <img :src="value" alt="" class="w-60 flex mx-auto m-1" />
           </template>
         </template>
         <p v-else class="">請選擇一個商品查看</p>
@@ -164,7 +174,6 @@ export default {
         .then((res) => {
           console.log(res);
           this.productsList = res.data.products;
-          console.log(this.productsList);
         })
         .catch((err) => {
           console.log(err);
@@ -191,17 +200,19 @@ export default {
           console.log(err);
         });
     },
-    delProducts() {
+    delProduct(value) {
+      console.log(value);
       this.axios
-        .delete(
-          `${this.url}/api/${this.apiPath}/admin/product/-Mts0xvpeSWRVjuKsgoU`
-        )
+        .delete(`${this.url}/api/${this.apiPath}/admin/product/${value}`)
         .then((res) => {
           console.log(res);
         })
         .catch((err) => {
           console.log(err);
         });
+      this.$nextTick(() => {
+        this.getProducts();
+      });
     },
   },
 };
