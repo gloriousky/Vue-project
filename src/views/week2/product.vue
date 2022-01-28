@@ -59,7 +59,7 @@
               <p class="">商品描述：{{ productInfo.description }}</p>
               <p class="">商品內容：{{ productInfo.content }}</p>
               <div class="flex justify-center items-center">
-                <p class="mx-2 text-xl">特價:{{ productInfo.price }}元</p>
+                <p class="mx-2 text-xl text-red-500">特價:{{ productInfo.price }}元</p>
                 <p class="">
                   <del>{{ productInfo.origin_price }}</del>
                 </p>

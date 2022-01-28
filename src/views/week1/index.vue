@@ -68,7 +68,7 @@ export default {
   data() {
     return {
       url: "https://vue3-course-api.hexschool.io/v2",
-      apiPath: "david-hexschool",
+      apiPath: "week3-productlist",
       emailValue: "",
       passwordValue: "",
     };
@@ -154,7 +154,7 @@ export default {
     delProducts() {
       this.axios
         .delete(
-          `${this.url}/api/${this.apiPath}/admin/product/-MuJsj_RPDAGBP_ivB-5`
+          `${this.url}/api/${this.apiPath}/admin/product/-MuULfDwsXrLVxwlHqQA`
         )
         .then((res) => {
           console.log(res);
