@@ -9,8 +9,9 @@
               <th width="150">產品名稱</th>
               <th width="120">原價</th>
               <th width="120">售價</th>
-              <th width="150">是否啟用</th>
+              <th width="120">是否啟用</th>
               <th width="120">查看細節</th>
+              <th width="150">編輯/刪除</th>
             </tr>
           </thead>
           <tbody>
