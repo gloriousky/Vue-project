@@ -5,7 +5,7 @@
         <div class="flex justify-between items-center mb-2">
           <div></div>
           <h2 class="text-2xl">產品列表</h2>
-          <button class="text-white  text-xl bg-blue-500 p-2 rounded-xl">建立新產品</button>
+          <button class="text-white  text-xl bg-blue-500 p-2 rounded-xl" @click="addProducts">建立新產品</button>
         </div>
         <table class="border-4 border-gray-800 bg-white">
           <thead class="border-b-4 border-gray-800">
