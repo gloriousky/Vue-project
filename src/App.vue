@@ -7,6 +7,7 @@
 
     <router-link class="m-2 router-link-active" to="/week1">第一週作業</router-link>
     <router-link class="m-2" to="/week2/login">第二週作業</router-link>
+    <router-link class="m-2" to="/week3/login">第三週作業</router-link>
   </aside>
   <router-view></router-view>
 </template>

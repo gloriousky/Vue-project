@@ -48,7 +48,7 @@
 </template>
 <script>
 export default {
-  name: "login",
+  name: "week3login",
   data() {
     return {
       url: "https://vue3-course-api.hexschool.io/v2",
@@ -57,7 +57,8 @@ export default {
       passwordValue: "",
     };
   },
-  mounted() {},
+  created() {
+  },
   methods: {
     login() {
       const username = this.emailValue;
@@ -67,21 +68,14 @@ export default {
         username,
         password,
       };
-      if (username === "" || password === "") {
-        this.$swal({
-          icon: "error",
-          title: "請輸入帳號及密碼",
-        });
-        return;
-      }
       this.axios
         .post(`${this.url}/admin/signin`, user)
         .then((res) => {
           console.log(res);
-          this.$swal(res.data.message);
+          alert(res.data.message);
           const { token, expired } = res.data;
           document.cookie = `hexToken=${token};expires=${new Date(expired)}`;
-          this.$router.push("/week2/product");
+          this.$router.push("/week3/product");
         })
         .catch((err) => {
           console.dir(err);
