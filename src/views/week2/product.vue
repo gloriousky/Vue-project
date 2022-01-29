@@ -14,7 +14,11 @@
             </tr>
           </thead>
           <tbody>
-            <tr v-for="value in productsList" :key="value.id" class="border-b border-gray-400">
+            <tr
+              v-for="value in productsList"
+              :key="value.id"
+              class="border-b border-gray-400"
+            >
               <td width="150">{{ value.title }}</td>
               <td width="120">
                 {{ value.origin_price }}
@@ -39,18 +43,15 @@
           </tbody>
         </table>
         <p class="text-xl">
-          目前有 <span class="text-red-500">{{ productsList.length }}</span> 項產品
+          目前有
+          <span class="text-red-500">{{ productsList.length }}</span> 項產品
         </p>
       </div>
       <div class="">
         <h2>單一產品細節</h2>
         <template v-if="productInfo.title">
           <div class="">
-            <img
-              :src="productInfo.imageUrl"
-              class="w-80 mx-auto"
-              alt="主圖"
-            />
+            <img :src="productInfo.imageUrl" class="w-80 mx-auto" alt="主圖" />
             <div class="">
               <h5 class="">
                 {{ productInfo.title }}
@@ -59,7 +60,9 @@
               <p class="">商品描述：{{ productInfo.description }}</p>
               <p class="">商品內容：{{ productInfo.content }}</p>
               <div class="flex justify-center items-center">
-                <p class="mx-2 text-xl text-red-500">特價:{{ productInfo.price }}元</p>
+                <p class="mx-2 text-xl text-red-500">
+                  特價:{{ productInfo.price }}元
+                </p>
                 <p class="">
                   <del>{{ productInfo.origin_price }}</del>
                 </p>
@@ -67,8 +70,8 @@
               </div>
             </div>
           </div>
-          <template v-for="(value) in productInfo.imagesUrl">
-            <img :src="value" alt="" class="w-60 flex mx-auto">
+          <template v-for="value in productInfo.imagesUrl">
+            <img :src="value" alt="" class="w-60 flex mx-auto" />
           </template>
         </template>
         <p v-else class="">請選擇一個商品查看</p>
@@ -137,7 +140,7 @@ export default {
         })
         .catch((err) => {
           console.log(err);
-          alert("狀態異常");
+          this.$swal("狀態異常");
           this.$router.push("/week2/login");
         });
     },

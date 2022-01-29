@@ -127,7 +127,6 @@ export default {
       },
     };
   },
-  created() {},
   mounted() {
     this.checkLogin();
   },

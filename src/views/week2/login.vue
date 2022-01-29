@@ -57,8 +57,7 @@ export default {
       passwordValue: "",
     };
   },
-  created() {
-  },
+  mounted() {},
   methods: {
     login() {
       const username = this.emailValue;
@@ -68,11 +67,18 @@ export default {
         username,
         password,
       };
+      if (username === "" || password === "") {
+        this.$swal({
+          icon: "error",
+          title: "請輸入帳號及密碼",
+        });
+        return;
+      }
       this.axios
         .post(`${this.url}/admin/signin`, user)
         .then((res) => {
           console.log(res);
-          alert(res.data.message);
+          this.$swal(res.data.message);
           const { token, expired } = res.data;
           document.cookie = `hexToken=${token};expires=${new Date(expired)}`;
           this.$router.push("/week2/product");
