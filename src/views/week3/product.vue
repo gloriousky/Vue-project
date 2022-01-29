@@ -1,23 +1,28 @@
 <template>
-  <div class="flex flex-col items-center mx-auto">
-    <div class="">
-      <div class="col-md-6">
-        <h2>產品列表</h2>
+  <div class="flex flex-col justify-center items-center mx-auto">
+    <div class="w-5/6 flex flex-col justify-center items-center">
+      <div class="">
+        <div class="flex justify-between items-center mb-2">
+          <div></div>
+          <h2 class="text-2xl">產品列表</h2>
+          <button class="text-white  text-xl bg-blue-500 p-2 rounded-xl">建立新產品</button>
+        </div>
         <table class="border-4 border-gray-800 bg-white">
           <thead class="border-b-4 border-gray-800">
             <tr>
               <th width="150">產品名稱</th>
               <th width="120">原價</th>
               <th width="120">售價</th>
-              <th width="150">是否啟用</th>
+              <th width="120">是否啟用</th>
               <th width="120">查看細節</th>
+              <th width="150">編輯/刪除</th>
             </tr>
           </thead>
           <tbody>
             <tr
               v-for="value in productsList"
               :key="value.id"
-              class="border-b border-gray-400"
+              class="border-b border-gray-400 text-lg"
             >
               <td width="150">{{ value.title }}</td>
               <td width="120">
@@ -26,7 +31,7 @@
               <td width="120">
                 {{ value.price }}
               </td>
-              <td width="150">
+              <td width="120">
                 <span v-if="value.is_enabled" class="text-green-600">啟用</span>
                 <span v-else>未啟用</span>
               </td>
@@ -37,6 +42,29 @@
                   class="text-blue-500"
                 >
                   查看細節
+                </button>
+              </td>
+              <td width="150">
+                <button
+                  @click="getProductInfo(value)"
+                  type="button"
+                  class="
+                    text-white
+                    bg-blue-500
+                    hover:bg-blue-700
+                    p-2
+                    mx-3
+                    rounded-xl
+                  "
+                >
+                  編輯
+                </button>
+                <button
+                  @click="delProduct(value.id)"
+                  type="button"
+                  class="text-white bg-red-400 hover:bg-red-600 p-2 rounded-xl"
+                >
+                  刪除
                 </button>
               </td>
             </tr>
@@ -71,7 +99,7 @@
             </div>
           </div>
           <template v-for="value in productInfo.imagesUrl">
-            <img :src="value" alt="" class="w-60 flex mx-auto" />
+            <img :src="value" alt="" class="w-60 flex mx-auto m-1" />
           </template>
         </template>
         <p v-else class="">請選擇一個商品查看</p>
@@ -81,11 +109,11 @@
 </template>
 <script>
 export default {
-  name: "product",
+  name: "week3product",
   data() {
     return {
       url: "https://vue3-course-api.hexschool.io/v2",
-      apiPath: "david-hexschool",
+      apiPath: "week3-productlist",
       productsList: [],
       productInfo: {
         title: "",
@@ -99,7 +127,6 @@ export default {
       },
     };
   },
-  created() {},
   mounted() {
     this.checkLogin();
   },
@@ -140,7 +167,7 @@ export default {
         })
         .catch((err) => {
           console.log(err);
-          this.$swal("狀態異常");
+          alert("狀態異常");
           this.$router.push("/week2/login");
         });
     },
@@ -150,7 +177,6 @@ export default {
         .then((res) => {
           console.log(res);
           this.productsList = res.data.products;
-          console.log(this.productsList);
         })
         .catch((err) => {
           console.log(err);
@@ -169,7 +195,7 @@ export default {
     },
     addProducts() {
       this.axios
-        .post(`${this.url}/api/${this.apiPath}/admin/product`, product)
+        .post(`${this.url}/api/${this.apiPath}/admin/product`)
         .then((res) => {
           console.log(res);
         })
@@ -177,13 +203,14 @@ export default {
           console.log(err);
         });
     },
-    delProducts() {
+    delProduct(value) {
+      console.log(value);
+      this.productsList = [];
       this.axios
-        .delete(
-          `${this.url}/api/${this.apiPath}/admin/product/-Mts0xvpeSWRVjuKsgoU`
-        )
+        .delete(`${this.url}/api/${this.apiPath}/admin/product/${value}`)
         .then((res) => {
           console.log(res);
+          this.getProducts();
         })
         .catch((err) => {
           console.log(err);
