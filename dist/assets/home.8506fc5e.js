@@ -1,0 +1,1 @@
+import{_ as e}from"./plugin-vue_export-helper.21dcd24c.js";import{o as r,c as o}from"./vendor.edb13cca.js";const c={};function n(t,l){return r(),o("h1",null,"Hello, world.")}var _=e(c,[["render",n]]);export{_ as default};
