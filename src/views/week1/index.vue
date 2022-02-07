@@ -153,7 +153,7 @@ export default {
     };
   },
   mounted() {
-    console.log("mm");
+
   },
   methods: {
     getProductInfo(value) {
